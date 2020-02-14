@@ -97,7 +97,18 @@ public class BST implements BST_Interface {
 		if (size == 0) {
 			return false;
 		}
-		// TODO Auto-generated method stub
+		BST_Node current_node = root;
+		while(current_node != null) {
+			if(s.equals(current_node.data)) {
+				return true;
+			}
+			if(s.compareTo(current_node.data)<0) {
+				current_node = current_node.left;
+			}
+			else {
+				current_node = current_node.right;
+			}
+		}
 		return false;
 	}
 

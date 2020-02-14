@@ -78,7 +78,9 @@ public class BST implements BST_Interface {
 			return null;
 		}
 		BST_Node current = root;
-		//TODO do this meathods por favor
+		while(current.right != null) {
+			current = current.right;
+		}
 		return current.data;
 	}
 

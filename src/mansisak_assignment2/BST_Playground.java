@@ -14,6 +14,18 @@ public class BST_Playground {
   
   public static void main(String[]args){
 
+	BST t = new BST();
+	t.insert("a");
+	t.insert("b");
+	t.insert("c");
+	t.insert("d");
+	t.insert("e");
+	t.insert("f");
+	System.out.println(t.size());
+	printLevelOrder(t);
+	System.out.println("");
+	printInOrder(t.getRoot());
+	
    // you should test your BST implementation in here
    // it is up to you to test it thoroughly and make sure
    // the methods behave as requested above in the interface
@@ -34,7 +46,8 @@ public class BST_Playground {
   static void printLevelOrder(BST tree){ 
   //will print your current tree in Level-Order...
   //https://en.wikipedia.org/wiki/Tree_traversal
-    int h=tree.getRoot().getHeight();
+	//TODO: line 38 was modified by me
+    int h=tree.height();
     for(int i=0;i<=h;i++){
       printGivenLevel(tree.getRoot(), i);
     }

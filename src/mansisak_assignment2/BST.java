@@ -26,6 +26,8 @@ public class BST implements BST_Interface {
 		BST_Node new_node = new BST_Node(s);
 		if (size == 0) {
 			root = new_node;
+			size++;
+			return true;
 		}
 		BST_Node current_node = root;
 		BST_Node parent_node = null;
@@ -123,7 +125,7 @@ public class BST implements BST_Interface {
 		if (size == 1) {
 			return 0;
 		}
-		Queue<BST_Node> q = new LinkedList();
+		Queue<BST_Node> q = new LinkedList<BST_Node>();
 		q.add(root);
 		int height = 0;
 

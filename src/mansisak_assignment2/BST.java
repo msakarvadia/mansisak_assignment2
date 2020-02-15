@@ -23,6 +23,10 @@ public class BST implements BST_Interface {
 		if (this.contains(s)) {
 			return false;
 		}
+		if (s == null) {
+			// TODO: do we check for this case?
+			return false;
+		}
 		BST_Node new_node = new BST_Node(s);
 		if (size == 0) {
 			root = new_node;
@@ -69,81 +73,72 @@ public class BST implements BST_Interface {
 				current_node = current_node.right;
 			}
 		}
-		//Now current_node is the value we want to delete
-		//case 1: delete a leaf
-		if(current_node.left==null && current_node.right==null) {
-			if(current_node.equals(root)) {
+		// Now current_node is the value we want to delete
+		// case 1: delete a leaf
+		if (current_node.left == null && current_node.right == null) {
+			if (current_node.equals(root)) {
 				root = null;
-			}
-			else if(current_node.equals(parent_node.left)) {
+			} else if (current_node.equals(parent_node.left)) {
 				parent_node.left = null;
-			}
-			else if(current_node.equals(parent_node.right)) {
+			} else if (current_node.equals(parent_node.right)) {
 				parent_node.right = null;
 			}
 		}
-		
-		//Case 2: delete a node with only one leaf
-		else if((current_node.left==null&&current_node.right!=null)) {
-			if(current_node.equals(root)) {
+
+		// Case 2: delete a node with only one leaf
+		else if ((current_node.left == null && current_node.right != null)) {
+			if (current_node.equals(root)) {
 				root = root.right;
-			}
-			else if(current_node.equals(parent_node.left)) {
+			} else if (current_node.equals(parent_node.left)) {
 				parent_node.left = current_node.right;
-			}
-			else if(current_node.equals(parent_node.right)) {
+			} else if (current_node.equals(parent_node.right)) {
 				parent_node.right = current_node.right;
 			}
-		}
-		else if ((current_node.right==null&&current_node.left!=null)) {
-			if(current_node.equals(root)) {
+		} else if ((current_node.right == null && current_node.left != null)) {
+			if (current_node.equals(root)) {
 				root = root.left;
-			}
-			else if(current_node.equals(parent_node.left)) {
+			} else if (current_node.equals(parent_node.left)) {
 				parent_node.left = current_node.left;
-			}
-			else if(current_node.equals(parent_node.right)) {
+			} else if (current_node.equals(parent_node.right)) {
 				parent_node.right = current_node.left;
 			}
 		}
-		//case 3: delete a node with two leaves - USE MIN VALUE OF RIGHT SUB TREE TO DO THIS 
-		else if(current_node.right!=null && current_node.left!=null) {
-			BST sub_right_bst= new BST();
+		// case 3: delete a node with two leaves - USE MIN VALUE OF RIGHT SUB TREE TO DO
+		// THIS
+		else if (current_node.right != null && current_node.left != null) {
+			BST sub_right_bst = new BST();
 			sub_right_bst.root = current_node.right;
-			//System.out.println("sub_right_root: "+sub_right_bst.root.data);
-			
+			// System.out.println("sub_right_root: "+sub_right_bst.root.data);
+
 			BST_Node min_node_parent = current_node;
 			BST_Node min_node = sub_right_bst.root;
-			//after this loop "min_node" is the in_order_successor:
+			// after this loop "min_node" is the in_order_successor:
 			while (min_node.left != null) {
 				min_node_parent = min_node;
 				min_node = min_node.left;
 			}
-			
-			//System.out.println("in_order_successor: "+min_node);
-			
-			if(current_node.equals(root)) {
+
+			// System.out.println("in_order_successor: "+min_node);
+
+			if (current_node.equals(root)) {
 				root = min_node;
-			}
-			else if(current_node.equals(parent_node.left)) {
+			} else if (current_node.equals(parent_node.left)) {
 				parent_node.left = min_node;
-			}
-			else if(current_node.equals(parent_node.right)) {
+			} else if (current_node.equals(parent_node.right)) {
 				parent_node.right = min_node;
-				
+
 			}
-			if(min_node.equals(min_node_parent.left)) {
+			if (min_node.equals(min_node_parent.left)) {
 				min_node_parent.left = null;
-			}
-			else if(min_node.equals(min_node_parent.right)) {
-				min_node_parent.right=null;
+			} else if (min_node.equals(min_node_parent.right)) {
+				min_node_parent.right = null;
 			}
 			min_node.right = current_node.right;
 			min_node.left = current_node.left;
-			
+
 		}
 		// TODO SOMEHOW ID THE CORRECT CELL AND REMOVE IT AND REARRANGE THE TREE
-		
+
 		size--;
 		return false;
 	}
@@ -185,7 +180,7 @@ public class BST implements BST_Interface {
 		if (size == 0) {
 			return false;
 		}
-		if(s==null) {
+		if (s == null) {
 			return false;
 		}
 		BST_Node current_node = root;
@@ -212,9 +207,9 @@ public class BST implements BST_Interface {
 		if (size == 0) {
 			return -1;
 		}
-		//if (size == 1) {
-			//return 0;
-		//}
+		// if (size == 1) {
+		// return 0;
+		// }
 		Queue<BST_Node> q = new LinkedList<BST_Node>();
 		q.add(root);
 		int height = 0;
@@ -222,7 +217,7 @@ public class BST implements BST_Interface {
 		while (true) {
 			int number_of_nodes = q.size();
 			if (number_of_nodes == 0) {
-				return height-1;
+				return height - 1;
 			}
 			height++;
 			while (number_of_nodes > 0) {

@@ -110,20 +110,18 @@ public class BST implements BST_Interface {
 		else if(current_node.right!=null && current_node.left!=null) {
 			BST sub_right_bst= new BST();
 			sub_right_bst.root = current_node.right;
-			String in_order_successor = sub_right_bst.findMin();
-			BST_Node min_node = current_node;
+			System.out.println("sub_right_root: "+sub_right_bst.root.data);
+			
 			BST_Node min_node_parent = null;
-			while (min_node != null) {
-				if (in_order_successor.equals(min_node.data)) {
-					break;
-				}
+			BST_Node min_node = sub_right_bst.root;
+			//after this loop "min_node" is the in_order_successor:
+			while (min_node.left != null) {
 				min_node_parent = min_node;
-				if (in_order_successor.compareTo(min_node.data) < 0) {
-					min_node = min_node.left;
-				} else {
-					min_node = min_node.right;
-				}
+				min_node = min_node.left;
 			}
+			
+			System.out.println("in_order_successor: "+min_node);
+			
 			if(current_node.equals(root)) {
 				root = min_node;
 			}

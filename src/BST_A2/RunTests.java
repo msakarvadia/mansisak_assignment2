@@ -1,4 +1,4 @@
-package mansisak_assignment2;
+package BST_A2;
 import gradingTools.comp410s20.assignment2.testcases.Assignment2Suite;
 
 public class RunTests {

@@ -7,7 +7,7 @@
  *
 */
 
-package mansisak_assignment2;
+package BST_A2;
 
 /*
   Interface: The BST will provide this collection of operations:

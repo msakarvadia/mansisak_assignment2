@@ -1,4 +1,4 @@
-package mansisak_assignment2;
+package BST_A2;
 
 public class BST_Playground {
 /*

@@ -110,9 +110,9 @@ public class BST implements BST_Interface {
 		else if(current_node.right!=null && current_node.left!=null) {
 			BST sub_right_bst= new BST();
 			sub_right_bst.root = current_node.right;
-			System.out.println("sub_right_root: "+sub_right_bst.root.data);
+			//System.out.println("sub_right_root: "+sub_right_bst.root.data);
 			
-			BST_Node min_node_parent = null;
+			BST_Node min_node_parent = current_node;
 			BST_Node min_node = sub_right_bst.root;
 			//after this loop "min_node" is the in_order_successor:
 			while (min_node.left != null) {
@@ -120,7 +120,7 @@ public class BST implements BST_Interface {
 				min_node = min_node.left;
 			}
 			
-			System.out.println("in_order_successor: "+min_node);
+			//System.out.println("in_order_successor: "+min_node);
 			
 			if(current_node.equals(root)) {
 				root = min_node;
@@ -185,6 +185,9 @@ public class BST implements BST_Interface {
 		if (size == 0) {
 			return false;
 		}
+		if(s==null) {
+			return false;
+		}
 		BST_Node current_node = root;
 		while (current_node != null) {
 			if (s.equals(current_node.data)) {
@@ -209,9 +212,9 @@ public class BST implements BST_Interface {
 		if (size == 0) {
 			return -1;
 		}
-		if (size == 1) {
-			return 0;
-		}
+		//if (size == 1) {
+			//return 0;
+		//}
 		Queue<BST_Node> q = new LinkedList<BST_Node>();
 		q.add(root);
 		int height = 0;
@@ -219,7 +222,7 @@ public class BST implements BST_Interface {
 		while (true) {
 			int number_of_nodes = q.size();
 			if (number_of_nodes == 0) {
-				return height;
+				return height-1;
 			}
 			height++;
 			while (number_of_nodes > 0) {

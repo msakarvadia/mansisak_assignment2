@@ -15,20 +15,36 @@ public class BST_Playground {
   public static void main(String[]args){
 
 	BST t = new BST();
-	t.insert("a");
-	t.insert("c");
-	t.insert("b");
-	t.insert("e");
 	t.insert("d");
-	t.insert("f");
-	printLevelOrder(t);
-	System.out.println(t.contains("c"));
-	t.remove("c");
-	System.out.println(t.contains("c"));
-	System.out.println(t.size());
+	t.insert("d");
+	t.insert("d");
+	t.insert("d");
 	
-	System.out.println("");
+	//t.insert("f");
+	//t.insert("d");
+	
 	printLevelOrder(t);
+	System.out.println("");
+	System.out.println("Contains: "+t.contains("a")+" ");
+	System.out.println("Min: "+t.findMin()+" ");
+	System.out.println("Max: "+t.findMax()+" ");
+	System.out.println("Size: "+t.size()+" ");
+	System.out.println("Empty?: "+t.empty()+" ");
+	System.out.println("Height: "+t.height()+" ");
+	System.out.println("Root value: "+t.getRoot()+" ");
+	
+	t.remove("a");
+	
+	System.out.println("Contains: "+t.contains("a")+" ");
+	System.out.println("Min: "+t.findMin()+" ");
+	System.out.println("Max: "+t.findMax()+" ");
+	System.out.println("Size: "+t.size()+" ");
+	System.out.println("Empty?: "+t.empty()+" ");
+	System.out.println("Height: "+t.height()+" ");
+	System.out.println("Root value: "+t.getRoot()+" ");
+	
+	printLevelOrder(t);
+	System.out.println("");
 	
    // you should test your BST implementation in here
    // it is up to you to test it thoroughly and make sure

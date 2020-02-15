@@ -15,15 +15,21 @@ public class BST_Playground {
   public static void main(String[]args){
 
 	BST t = new BST();
-	t.insert("d");
-	t.insert("d");
-	t.insert("d");
+	t.insert("e");
+	t.insert("f");
+	t.insert("g");
+	t.insert("h");
+	
+	t.insert("a");
+	t.insert("b");
+	t.insert("c");
 	t.insert("d");
 	
 	//t.insert("f");
 	//t.insert("d");
 	
-	printLevelOrder(t);
+	//printLevelOrder(t);
+	printInOrder(t.getRoot());
 	System.out.println("");
 	System.out.println("Contains: "+t.contains("a")+" ");
 	System.out.println("Min: "+t.findMin()+" ");
@@ -43,7 +49,8 @@ public class BST_Playground {
 	System.out.println("Height: "+t.height()+" ");
 	System.out.println("Root value: "+t.getRoot()+" ");
 	
-	printLevelOrder(t);
+	//printLevelOrder(t);
+	printInOrder(t.getRoot());
 	System.out.println("");
 	
    // you should test your BST implementation in here

@@ -56,7 +56,96 @@ public class BST implements BST_Interface {
 		if (!this.contains(s)) {
 			return false;
 		}
+		BST_Node current_node = root;
+		BST_Node parent_node = null;
+		while (current_node != null) {
+			if (s.equals(current_node.data)) {
+				break;
+			}
+			parent_node = current_node;
+			if (s.compareTo(current_node.data) < 0) {
+				current_node = current_node.left;
+			} else {
+				current_node = current_node.right;
+			}
+		}
+		//Now current_node is the value we want to delete
+		//case 1: delete a leaf
+		if(current_node.left==null && current_node.right==null) {
+			if(current_node.equals(root)) {
+				root = null;
+			}
+			else if(current_node.equals(parent_node.left)) {
+				parent_node.left = null;
+			}
+			else if(current_node.equals(parent_node.right)) {
+				parent_node.right = null;
+			}
+		}
+		
+		//Case 2: delete a node with only one leaf
+		else if((current_node.left==null&&current_node.right!=null)) {
+			if(current_node.equals(root)) {
+				root = root.right;
+			}
+			else if(current_node.equals(parent_node.left)) {
+				parent_node.left = current_node.right;
+			}
+			else if(current_node.equals(parent_node.right)) {
+				parent_node.right = current_node.right;
+			}
+		}
+		else if ((current_node.right==null&&current_node.left!=null)) {
+			if(current_node.equals(root)) {
+				root = root.left;
+			}
+			else if(current_node.equals(parent_node.left)) {
+				parent_node.left = current_node.left;
+			}
+			else if(current_node.equals(parent_node.right)) {
+				parent_node.right = current_node.left;
+			}
+		}
+		//case 3: delete a node with two leaves - USE MIN VALUE OF RIGHT SUB TREE TO DO THIS 
+		else if(current_node.right!=null && current_node.left!=null) {
+			BST sub_right_bst= new BST();
+			sub_right_bst.root = current_node.right;
+			String in_order_successor = sub_right_bst.findMin();
+			BST_Node min_node = current_node;
+			BST_Node min_node_parent = null;
+			while (min_node != null) {
+				if (in_order_successor.equals(min_node.data)) {
+					break;
+				}
+				min_node_parent = min_node;
+				if (in_order_successor.compareTo(min_node.data) < 0) {
+					min_node = min_node.left;
+				} else {
+					min_node = min_node.right;
+				}
+			}
+			if(current_node.equals(root)) {
+				root = min_node;
+			}
+			else if(current_node.equals(parent_node.left)) {
+				parent_node.left = min_node;
+			}
+			else if(current_node.equals(parent_node.right)) {
+				parent_node.right = min_node;
+				
+			}
+			if(min_node.equals(min_node_parent.left)) {
+				min_node_parent.left = null;
+			}
+			else if(min_node.equals(min_node_parent.right)) {
+				min_node_parent.right=null;
+			}
+			min_node.right = current_node.right;
+			min_node.left = current_node.left;
+			
+		}
 		// TODO SOMEHOW ID THE CORRECT CELL AND REMOVE IT AND REARRANGE THE TREE
+		
 		size--;
 		return false;
 	}

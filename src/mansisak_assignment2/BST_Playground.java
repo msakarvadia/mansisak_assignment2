@@ -16,15 +16,19 @@ public class BST_Playground {
 
 	BST t = new BST();
 	t.insert("a");
-	t.insert("b");
 	t.insert("c");
-	t.insert("d");
+	t.insert("b");
 	t.insert("e");
+	t.insert("d");
 	t.insert("f");
-	System.out.println(t.size());
 	printLevelOrder(t);
+	System.out.println(t.contains("c"));
+	t.remove("c");
+	System.out.println(t.contains("c"));
+	System.out.println(t.size());
+	
 	System.out.println("");
-	printInOrder(t.getRoot());
+	printLevelOrder(t);
 	
    // you should test your BST implementation in here
    // it is up to you to test it thoroughly and make sure

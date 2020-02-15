@@ -20,10 +20,59 @@ public class BST_Playground {
 	t.insert("g");
 	t.insert("h");
 	
+	t.insert("e");
+	t.insert("x");
+	t.insert("g");
+	t.insert("h");
+	
+	t.insert("a");
+	t.insert("y");
+	t.insert("c");
+	t.insert("d");
+	
+	t.insert("z");
+	t.insert("i");
+	t.insert("j");
+	t.insert("k");
+	
+	t.insert("l");
+	t.insert("n");
+	t.insert("o");
+	t.insert("m");
 	t.insert("a");
 	t.insert("b");
 	t.insert("c");
 	t.insert("d");
+	
+	t.insert("p");
+	t.insert("r");
+	t.insert("q");
+	t.insert("s");
+	
+	t.insert("t");
+	t.insert("w");
+	t.insert("u");
+	t.insert("v");
+	
+	t.insert("h");
+	t.insert("i");
+	t.insert("j");
+	t.insert("k");
+	
+	t.insert("l");
+	t.insert("n");
+	t.insert("o");
+	t.insert("m");
+	
+	t.insert("h");
+	t.insert("i");
+	t.insert("j");
+	t.insert("k");
+	
+	t.insert("l");
+	t.insert("n");
+	t.insert("o");
+	t.insert("m");
 	
 	//t.insert("f");
 	//t.insert("d");
@@ -40,6 +89,10 @@ public class BST_Playground {
 	System.out.println("Root value: "+t.getRoot()+" ");
 	
 	t.remove("a");
+	t.remove("d");
+	t.remove("m");
+	t.remove("l");
+	
 	
 	System.out.println("Contains: "+t.contains("a")+" ");
 	System.out.println("Min: "+t.findMin()+" ");

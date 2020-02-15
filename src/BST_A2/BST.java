@@ -24,7 +24,6 @@ public class BST implements BST_Interface {
 			return false;
 		}
 		if (s == null) {
-			// TODO: do we check for this case?
 			return false;
 		}
 		BST_Node new_node = new BST_Node(s);
